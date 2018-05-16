@@ -10,42 +10,26 @@
 
 html, body{
 	height: 100%;
-	width: 100%;
-}
-
-@media (min-width: 1200px){
-#main{
-	width: 1100px;
-}
-}
-@media (max-width: 1200px) and (min-width: 800px){
-#main{
-	width: 700px;
-}
-}
-
-@media (max-width: 800px) and (min-width: 0px){
-#main{
-	height: 100%;
-}
-}
-
-
-#main{
-	margin: auto;
-	height: 100%;
+	width: 100%;	
 	background-color: #d6e5ff;
 }
 
 
-
-#header{
+#headerContainer{
 	height: 70px;
-	width: 100%;		
+	width: 100%;
 	background-color: #b5d1ff;
 }
 
-#header p{
+#headerContent{
+	height: 70px;
+	width: 800px;
+	margin: auto;
+	background-color: #b5d1ff;
+	overflow: hidden;
+}
+
+#headerContent p{
 	float: left;
 	height: 100%;	
 	font-size: 40px;
@@ -53,26 +37,26 @@ html, body{
 	padding-left: 30px;
 }
 
-#header ul{
+#headerContent ul{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
-#header li {
-	float: left;
+#headerContent li {
+	float: right;
 }
-#header li a {	
+#headerContent li a {	
 	font-size: 22px;
 	font-family: 'Josefin Sans', sans-serif;
 	display: inline-block;
 	color: black;
 	text-align: center;
 	text-decoration: none;
-	padding-left: 30px;
+	padding-right: 30px;
 	padding-top: 28px;
 }
 
-#header li a:hover {
+#headerContent li a:hover {
 	text-decoration: underline;
 	font-weight: 700;
 }	
@@ -85,7 +69,14 @@ html, body{
 	
 }
 
+#bodyContent{	
+	height: auto;
+	width: 800px;
+	background-color: #d6e5ff;
+	margin: auto;
+}
+
+
 #blogPost{
 	
-}
 }

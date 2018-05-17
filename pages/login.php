@@ -32,22 +32,46 @@ require '../phpfunctions/conf.php';
 	<!--USE PHP IN FUTURE TO MAKE OTHER BLOG POSTS-->
 	<!--BLOG POST 1-->
 	<div id = "bodyContent">
-		<form action="../phpfunctions/post_login.php" method="post">	
-			<p>WARNING: PASSWORDS ARE NOT ENCRYPTED CURRENTLY</p>
-			<p>ALL ACCOUNTS WILL BE DELETED AFTER TESTING PHASE</p>
-			<br>
-			<p>Log in:</p>
-			<p>Username: <input name="myusername" type ="text" id="myusername"></p>
-			<p>Password: <input name="mypassword" type ="password" id="mypassword"></p>
-			<p><input name="submit" type="submit" value="Login"></p>
-		</form>
 		<br>
-		<p>New? Make an account!</p>
-		<form action="../phpfunctions/make_account.php" method="post">
-			<p>Username: <input name="newuser" type = "text" id="newuser"></p>
-			<p>Password: <input name="newpass" type = "password" id="newpass"></p>
-			<p><input name="submit" type="submit" value="Submit"></p>
-		</form>
+		<h2>WARNING:</h2>
+		<br>
+		<h2>PASSWORDS ARE NOT ENCRYPTED AT THE MOMENT</h2>
+		<h2>ALL ACCOUNTS WILL BE DELETED AFTER TESTING PHASE</h2>
+		<br>
+		<div class="formContainer">
+			<form action="../phpfunctions/post_login.php" method="post">	
+				<h1>Log in</h1>
+				<br>
+				<div class="inputContainer">
+					<p>Username:</p><input name="myusername" type ="text" id="myusername">
+					<br>
+					<p>Password:</p><input name="mypassword" type ="password" id="mypassword">
+					<br>					
+					<p><input name="submit" type="submit" value="Login"></p>
+				</div>
+			</form>
+		</div>
+		<br>
+		<div class="formContainer">
+			<form action="../phpfunctions/make_account.php" method="post">		
+				<h1>Registration</h1>
+				<br>
+				<div class="inputContainer">				
+					<p>First name:</p><input name="firstname" type = "text" id="firstname">
+					<br>
+					<p>Last name:</p><input name="lastname" type = "text" id="lastname">
+					<br>					
+					<p>E-mail:</p><input name="email" type = "text" id="email">
+					<br>
+					<p>Username:</p><input name="newuser" type = "text" id="newuser">
+					<br>
+					<p>Password:</p><input name="newpass" type = "password" id="newpass">
+					<br>
+					<p><input name="submit" type="submit" value="Submit"></p>				
+				</div>
+			</form>
+		</div>
+		<br>
 	</div>
 </div>
 <!-- USE PHP TO MAKE REST OF BLOG POST OVERVIEWS ON HOME PAGE-->

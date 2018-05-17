@@ -35,10 +35,16 @@ session_start();
 		<p>Welcome!</p>
 		<?php
 		$username = $_SESSION['username'];
-		echo "<p>Username: $username</p>";
+		$firstname = $_SESSION['firstname'];
+		$lastname = $_SESSION['lastname'];
+		$email = $_SESSION['email'];
+		echo "
+		<p>Username: $username</p>
+		<p>First name: $firstname</p>
+		<p>Last name: $lastname</p>
+		<p>E-mail: $email</p>"
+		;?>
 		
-		
-		?>
 		<a href="../phpfunctions/logout.php">Log out</a>		
 	</div>
 </div>

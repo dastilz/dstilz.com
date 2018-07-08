@@ -1,4 +1,5 @@
 <?php
+$default = false;
 require '../phpfunctions/db.php';
 session_start();
 ?>
@@ -6,6 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="http://localhost/"/>
 	<link rel="stylesheet" href="../style.css">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
@@ -20,35 +22,45 @@ session_start();
 			<p id = "logo">dstilz.com</p>
 			<!--NAV-->
 			<ul>	
-			<li><a href="" style="text-decoration: underline; font-weight: 700">Account</a></li>
-			<li><a href="contact.php">Contact</a></li>	
-			<li><a href="projects.php">Projects</a></li>
-			<li><a href="../index.php">Blog</a></li>
+			<?php
+			$directory = $_SERVER['REQUEST_URI'];
+			list($empty, $name, $display) = explode("/", $directory);
+				if ($display == "public"){
+					if (isset($_SESSION['username'])){
+						echo "<li><a href=\"account/private\">Account</a></li>";
+					}
+					else{
+						echo "<li><a href=\"login\">Log in</a></li>";
+					}					
+				}
+				else if ($display == "private"){
+					echo "<li><a href=\"login\" style=\"text-decoration: underline; font-weight: 700\">Account</a></li>";			
+				}
+			?>
+			<li><a href="forum">Forum</a></li>	
+			<li><a href="projects/all">Projects</a></li>
+			<li><a href="">About</a></li>
 			</ul>
-			<!--LOGIN-->
-			<!--USE PHP FOR THIS-->
 		</div>
 	</div>
-	<!--USE PHP IN FUTURE TO MAKE OTHER BLOG POSTS-->
-	<!--BLOG POST 1-->
-	<div id = "bodyContent">
-		<p>Welcome!</p>
-		<?php
-		$username = $_SESSION['username'];
-		$firstname = $_SESSION['firstname'];
-		$lastname = $_SESSION['lastname'];
-		$email = $_SESSION['email'];
-		echo "
-		<p>Username: $username</p>
-		<p>First name: $firstname</p>
-		<p>Last name: $lastname</p>
-		<p>E-mail: $email</p>"
-		;?>
-		
-		<a href="../phpfunctions/logout.php">Log out</a>		
-	</div>
-</div>
-<!-- USE PHP TO MAKE REST OF BLOG POST OVERVIEWS ON HOME PAGE-->
+	<?php 	
+		$directory = $_SERVER['REQUEST_URI'];
+		list($empty, $name, $display) = explode("/", $directory);
+		if ($display == "public"){						
+			list($empty, $name, $display, $number) = explode("/", $directory);
+			$_SESSION['account_id'] = $number;		
+			require '../phpfunctions/display_public_account.php';	
+		}
+		else if ($display == "private"){
+			if (isset($_SESSION['username']))
+			{
+				require '../phpfunctions/display_private_account.php';
+			}
+			else{
+				header("location:../login");
+			}
+		}
+	?>	
 </body>
 
 

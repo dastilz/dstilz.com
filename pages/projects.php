@@ -6,6 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="http://localhost/"/>
 	<link rel="stylesheet" href="../style.css">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
@@ -23,11 +24,11 @@ session_start();
 			<li><a href="
 				<?php 
 					if (isset($_SESSION['username']))
-							echo "account";
+							echo "account/private";
 						else
 							echo "login";
 				?>
-			.php">
+			">
 				<?php 
 					if (isset($_SESSION['username']))
 						echo "Account";
@@ -35,21 +36,32 @@ session_start();
 						echo "Log in";
 				?>
 			</a></li>
-			<li><a href="contact.php">Contact</a></li>	
-			<li><a href="" style="text-decoration: underline; font-weight: 700">Projects</a></li>
-			<li><a href="../index.php">Blog</a></li>
+			<li><a href="forum">Forum</a></li>	
+			<li><a href="projects/all" style="text-decoration: underline; font-weight: 700">Projects</a></li>
+			<li><a href="">About</a></li>
 			</ul>
-			<!--LOGIN-->
-			<!--USE PHP FOR THIS-->
 		</div>
 	</div>
-	<!--USE PHP IN FUTURE TO MAKE OTHER BLOG POSTS-->
-	<!--BLOG POST 1-->
-	<div id = "bodyContent">		
+	<div id = "bodyContent">
+		<p>
+		<?php 	
+			$directory = $_SERVER['REQUEST_URI'];
+			list($empty, $name, $number)  = explode("/", $directory);
+			if ($number == "all")
+				require '../phpfunctions/display_projects.php';	
+			else
+				echo "<h1>$number</h1>";
+		?>
+		</p>
 	</div>
 </div>
-<!-- USE PHP TO MAKE REST OF BLOG POST OVERVIEWS ON HOME PAGE-->
 </body>
 
 
 </html>
+
+
+
+
+
+

@@ -2,29 +2,41 @@
 include 'db.php';
 session_start();
 
-$mysqli->select_db("users");
-
 $myusername=$_POST['myusername'];
 $mypassword=$_POST['mypassword'];
 
-/* prevents SQL injection, wasn't working for some reason?
-$myusername = stripslashes($myusername);
-$mypassword = stripslashes($mypassword);
-$myusername = mysql_real_escape_string($myusername);
-$mypassword = mysql_real_escape_string($mypassword);
-*/
 
-$query = "SELECT * FROM login WHERE username='$myusername' and password='$mypassword'";
-$result = $mysqli->query($query);
-$count = mysqli_num_rows($result);
+$mysqli->select_db("users");
 
-if($count==1){
+
+
+$query = $mysqli->prepare("SELECT * FROM login WHERE username=?");
+$query->bind_param('s', $myusername);
+$query->execute();
+$result = $query->get_result();
+
+
+$data = $result->fetch_array(MYSQLI_NUM);
+
+$password = $data[1];
+$firstname = $data[2];
+$lastname = $data[3];
+$email = $data[4];
+$id = $data[5];
+$admin = $data[6];
+
+if($query && password_verify($mypassword, $password)){
 	$_SESSION['username'] = $myusername;
-	$_SESSION['password'] = $mypassword;
+	$_SESSION['firstname'] = $firstname;
+	$_SESSION['lastname'] = $lastname;
+	$_SESSION['email'] = $email;
 	$_SESSION['error'] = NULL;
-	header("location:../pages/account.php");
+	$_SESSION['admin'] = $admin;
+	$_SESSION['privateid'] = $id;
+	header("location:../account/private");
 }
 else{
 	$_SESSION['error'] = "Wrong username and/or password. Try again";
-	header("location:../pages/login.php");
+	header("location:../login");
 }
+

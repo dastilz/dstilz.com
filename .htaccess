@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteRule ^forum/?$ pages/forum.php
+
+RewriteRule ^login/?$ pages/login.php
+RewriteRule ^account?$ pages/account.php
+RewriteRule ^account/private?$ pages/account.php
+RewriteRule ^account/.*$ pages/account.php
+
+RewriteRule ^projects/.*$ pages/projects.php

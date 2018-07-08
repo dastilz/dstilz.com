@@ -2,10 +2,10 @@
 require '../phpfunctions/db.php';
 require '../phpfunctions/conf.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="http://localhost/"/>
 	<link rel="stylesheet" href="../style.css">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
@@ -20,23 +20,14 @@ require '../phpfunctions/conf.php';
 			<p id = "logo">dstilz.com</p>
 			<!--NAV-->
 			<ul>	
-			<li><a href="" style="text-decoration: underline; font-weight: 700">Log in</a></li>
-			<li><a href="contact.php">Contact</a></li>	
-			<li><a href="projects.php">Projects</a></li>
-			<li><a href="../index.php">Blog</a></li>
+			<li><a href="login" style="text-decoration: underline; font-weight: 700">Log in</a></li>
+			<li><a href="forum">Forum</a></li>	
+			<li><a href="projects/all">Projects</a></li>
+			<li><a href="">About</a></li>
 			</ul>
-			<!--LOGIN-->
-			<!--USE PHP FOR THIS-->
 		</div>
 	</div>
-	<!--USE PHP IN FUTURE TO MAKE OTHER BLOG POSTS-->
-	<!--BLOG POST 1-->
 	<div id = "bodyContent">
-		<br>
-		<h2>WARNING:</h2>
-		<br>
-		<h2>PASSWORDS ARE NOT ENCRYPTED AT THE MOMENT</h2>
-		<h2>ALL ACCOUNTS WILL BE DELETED AFTER TESTING PHASE</h2>
 		<br>
 		<div class="formContainer">
 			<form action="../phpfunctions/post_login.php" method="post">	
@@ -74,11 +65,10 @@ require '../phpfunctions/conf.php';
 		<br>
 	</div>
 </div>
-<!-- USE PHP TO MAKE REST OF BLOG POST OVERVIEWS ON HOME PAGE-->
 </body>
 
 
 </html>
-
+?>
 
 

@@ -6,6 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="http://localhost/"/>
 	<link rel="stylesheet" href="../style.css">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
@@ -24,32 +25,29 @@ session_start();
 			<li><a href="
 				<?php 
 					if (isset($_SESSION['username']))
-							echo "account";
+							echo "account/private";
 						else
 							echo "login";
 				?>
-			.php">
+			">
 				<?php 
 					if (isset($_SESSION['username']))
 						echo "Account";
 					else
 						echo "Log in";
 				?>
-			</a></li>
-			<li><a href="" style="text-decoration: underline; font-weight: 700">Contact</a></li>	
-			<li><a href="projects.php">Projects</a></li>
-			<li><a href="../index.php">Blog</a></li>
+			</a></li>			
+			<li><a href="forum" style="text-decoration: underline; font-weight: 700">Forum</a></li>
+			<li><a href="projects/all">Projects</a></li>
+			<li><a href="">About</a></li>
+			
 			</ul>
-			<!--LOGIN-->
-			<!--USE PHP FOR THIS-->
 		</div>
 	</div>
-	<!--USE PHP IN FUTURE TO MAKE OTHER BLOG POSTS-->
-	<!--BLOG POST 1-->
-	<div id = "bodyContent">		
+	<div id = "bodyContent">
+	<p>This is a work in progress!</p>
 	</div>
 </div>
-<!-- USE PHP TO MAKE REST OF BLOG POST OVERVIEWS ON HOME PAGE-->
 </body>
 
 

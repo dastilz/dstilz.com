@@ -2,32 +2,53 @@
 include 'db.php';
 session_start();
 
-$mysqli->select_db("users");
-
 
 $firstname=$_POST['firstname'];
 $lastname=$_POST['lastname'];
 $email=$_POST['email'];
 $newuser=$_POST['newuser'];
 $newpass=$_POST['newpass'];
+$default = 0;
+
+$hashpass = password_hash($newpass, PASSWORD_DEFAULT);
+
+$mysqli->select_db("users");
 
 
 
-$query = "INSERT INTO `login`(`username`, `password`, `firstname`, `lastname`, `email`) VALUES ('$newuser','$newpass','$firstname','$lastname','$email')";
+$query =  $mysqli->prepare("INSERT INTO `login`(`username`, `password`, `firstname`, `lastname`, `email`, `admin`) VALUES (?,?,?,?,?,?)");
+$query->bind_param('sssssi', $newuser, $hashpass, $firstname, $lastname, $email, $default);
+$query->execute();
+$result = $query->get_result();
 
-$result = $mysqli->query($query);
+$query2 = $mysqli->prepare("SELECT * FROM login WHERE username=?");
+$query2->bind_param('s', $newuser);
+$query2->execute();
+$result2 = $query2->get_result();
 
-if($result){
-	$_SESSION['username'] = $newuser;
-	$_SESSION['password'] = $newpass;
-	$_SESSION['firstname'] = $firstname;
-	$_SESSION['lastname'] = $lastname;
-	$_SESSION['email'] = $email;
+
+$data = $result2->fetch_array(MYSQLI_NUM);
+
+$fetchusername = $data[0];
+$fetchpassword = $data[1];
+$fetchfirstname = $data[2];
+$fetchlastname = $data[3];
+$fetchemail = $data[4];
+$fetchid = $data[5];
+$fetchadmin = $data[6];
+
+
+if($query && $query2){
+	$_SESSION['username'] = $fetchusername;
+	$_SESSION['password'] = $fetchpassword;
+	$_SESSION['firstname'] = $fetchfirstname;
+	$_SESSION['lastname'] = $fetchlastname;
+	$_SESSION['email'] = $fetchemail;
+	$_SESSION['privateid'] = $fetchid;
+	$_SESSION['admin'] = $fetchadmin;
 	$_SESSION['error'] = NULL;
-	header("location:../pages/account.php");
+	header("location:../account/private");
 }
 else{	
-	header("location:../pages/login.php");
+	header("location:../login");
 }
-
-

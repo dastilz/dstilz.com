@@ -1,12 +1,13 @@
 <?php
-//Load mysql database and see if user is logged in, if so, redirect to private account page
+//Load mysql database
 require '../phpfunctions/db.php';
-require '../phpfunctions/logged_in_redirection.php';
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Create base url for redirections-->
+	<!--Create base url for redirections-->
 	<base href="http://localhost/"/>
 	<link rel="stylesheet" href="../style.css">
 	<!--Google font types-->
@@ -23,36 +24,51 @@ require '../phpfunctions/logged_in_redirection.php';
 			<p class = "header_logo">dstilz.com</p>
 			<!--Navigation-->
 			<ul>	
-			<li><a href="login" class="current_link">Log in</a></li>
-			<li><a href="forum">Forum</a></li>	
-			<li><a href="hub/all">Hub</a></li>
+			<!--
+			Change URL "Account/Log in" based on:
+			If logged in: Display "Account"
+			Anonymous: Display "Log in"
+			-->
+			<li><a href="
+				<?php 
+					if (isset($_SESSION['username']))
+							echo "account/private/?\">Account";
+						else
+							echo "login\">Log in";
+				?>
+			</a></li>			
+			<li><a href="forum">Forum</a></li>
+			<li><a href="hub/all" class="current_link">Hub</a></li>
 			<li><a href="">About</a></li>
 			</ul>
 		</div>
 	</div>
 	<!--Explicitly set 800px body container-->
-	<!--
-	Based on url: 
-	https://dstilz.com/login - display login
-	https://dstilz.com/registration - display registration
-	-->
 	<div class = "container_800px">
-		<?php
-			//Url parsing into queries using '/' as a delimeter
-			//Ex: Given 1/2
-			//$one = 1, $two = 2
+		<!--
+		Based on url:
+		https://dstilz.com/hub/all - Shows all hub content
+		https://dstilz.com/hub/CONTENT - Show specific hub content
+		-->
+		<p>
+		<?php 	
 			$directory = $_SERVER['REQUEST_URI'];
-			list($one, $two)  = explode("/", $directory);
-			//Passes in the query as a parameter into the php function through session data
-			$_SESSION['query2'] = $two;
-			require '../phpfunctions/display_login.php';
-		?>		
-		<br>
+			list($empty, $name, $number)  = explode("/", $directory);
+			if ($number == "all")
+				require '../phpfunctions/display_hub.php';	
+			else
+				echo "<h1>$number</h1>";
+		?>
+		</p>
 	</div>
 </div>
 </body>
 
 
 </html>
+
+
+
+
 
 

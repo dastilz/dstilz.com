@@ -1,3 +1,4 @@
+/* Get rid of some default styling */
 * {
         margin: 0;
         padding: 0;
@@ -8,83 +9,65 @@
         background: transparent;
 }
 
+
+/* Foundation styling */
 html, body{
 	height: 100%;
 	width: 100%;	
-	background-color: #d6e5ff;
+	background-color: #8fc1e3;
 	font-family: Arial, Helvetica, sans-serif;
 }
-
-label{
-	float: left;
-}
-
-
-input[type=text], [type=password] {	
-	display: block;
-	height: 20px;
-	width: 100%;
-	background-color : #fff;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-}
-
-input[type=submit] {
-	display:block;
-	width: 100%;
-	height: 30px;
-	background-color: #4CAF50;
-	color: white;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
 p,a{
 	font-size: 125%;
 }
-
-h1{
-	font-size: 115%;
-	text-align:center;	
+.current_link{
 	text-decoration: underline;
+	font-weight: 700;
 }
-
+.inline_p{
+	display: inline-block;
+}
+h1{
+	text-align: center;	
+	text-decoration:underline;
+	font-weight:bold;
+	font-size: 125%;
+}
 h2{
 	text-align: center;
+	font-weight: bold;
+	font-size: 125%;
 }
 
-
-#headerContainer{
+/* Header containers, horizontal link list, logo */
+.header_container{
 	height: 90px;
 	width: 100%;
-	background-color: #b5d1ff;
+	background-color: #5085a5;
 }
-
-#headerContent{
+.header_content{
 	height: 70px;
 	width: 800px;
 	margin: auto;
-	background-color: #b5d1ff;
+	background-color: #5085a5;
 	overflow: hidden;
 }
-
-#headerContent p{
+.header_logo{
 	float: left;
 	height: 100%;	
 	font-size: 50px;
 	font-family: 'Pacifico', cursive;
 	padding-left: 30px;
 }
-
-#headerContent ul{
+.header_content ul{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
-#headerContent li {
+.header_content li {
 	float: right;
 }
-#headerContent li a {	
+.header_content li a {	
 	font-size: 24px;
 	font-family: 'Josefin Sans', sans-serif;
 	display: inline-block;
@@ -94,60 +77,99 @@ h2{
 	padding-right: 30px;
 	padding-top: 38px;
 }
-
-#headerContent li a:hover {
-	text-decoration: underline;
+.header_content li a:hover {
 	font-weight: 700;
 }	
 
-#logoImg{
-	display: block;
-	max-width: 100%;
-	max-height: 100%;
-	margin:auto;
-	
+
+/* Vertical link list */
+.vertical_link_list{
+	width: auto; 
+}
+.vertical_link_list a {
+    background-color: #eee; 
+    color: black; 
+    display: block; 
+    padding: 3px; 
+    text-decoration: none; 
+}
+.vertical_link_list a:hover {
+    background-color: #ccc; 
 }
 
-#bodyContent{	
+/* Body containers */
+.container_800px{	
 	height: auto;
 	width: 800px;
-	background-color: #d6e5ff;
+	background-color: #8fc1e3;
+	margin: auto;
+}
+.inline_container_800px{	
+	display: inline-block;
+	height: auto;
+	width: 800px;
+	background-color: #8fc1e3;
 	margin: auto;
 }
 
-.formContainer{
-	padding: 50px;
-	margin: auto;
-	background-color: #fff;
+/* Nested containers and content containers */
+.content_container_800px{
+	background-color: #f7f9fb;
 	border-radius: 25px;
+	height: auto;
+	width:760px;
+	margin:auto;
+	padding:10px;
+	margin:10px;
 }
-.inputContainer{
-	width: 500px;
-	margin: auto;
+.inline_content_container_800px{
+	display: inline-block;
+	background-color: #f7f9fb;
+	border-radius: 25px;
+	height: auto;
+	width:760px;
+	margin:auto;
+	padding:10px;
+	margin:10px;
 }
-
-#blogPost{
-	
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-.blockRight{
+.container_right_550px{
 	height:auto;
 	float:right;
-	width:400px;
+	width:550px;
 }
-
-.blockLeft{
+.container_left_250px{
+	display: inline-block;
 	height: auto;
 	float:left;
-	width:400px;
+	width:250px;
 }
-
-.genericBlock{
+.content_container_550px{
+	background-color: #fff;
+	border-radius: 25px;
+	height: auto;
+	width:530px;
+	margin:auto;
+	padding:10px;
+}
+.content_container_250px{
+	background-color: #fff;
+	border-radius: 25px;
+	height: auto;
+	width:180px;
+	margin:auto;
+	text-align: center;
+	padding:10px;
+}
+.content_container_400px{
+	background-color: #f7f9fb;
+	border-radius: 25px;
+	height: auto;
+	width:360px;
+	margin:auto;
+	padding:10px;
+	margin:10px;
+}
+.content_container_centered_400px{
 	background-color: #fff;
 	border-radius: 25px;
 	height: auto;
@@ -157,37 +179,150 @@ input[type=submit]:hover {
 	text-align: center;
 	margin:10px;
 }
+.inline_content_container_400px{
+	display: inline-block;
+	background-color: #f7f9fb;
+	border-radius: 25px;
+	height: auto;
+	width:360px;
+	margin:auto;
+	padding:10px;
+	margin:10px;
+}
+.container_left_400px{
+	height: auto;
+	width:400px;
+	float: left;
+}
+.container_right_400px{
+	display: inline-block;
+	height:auto;
+	width:400px;	
+}
+.auto_centered_container{
+	width: auto;
+	height: auto;
+	margin: auto;
+}
 
-.uncenteredBlock{
+
+/* Forum main discussion container */
+.forum_main_discussion_top{}
+.forum_main_discussion_bottom{}
+.forum_discussion_top{
+	height: 35px;
+}
+.forum_discussion_middle{}
+.forum_main_discussion_bottom_left{
+	display: inline-block;
+}
+.forum_main_discussion_bottom_right{
+	float: right;
+	font-size: 60%;
+}
+
+
+/* Profile comment container */
+.profile_comment{
 	background-color: #fff;
 	border-radius: 25px;
 	height: auto;
-	width:310px;
+	width:360px;
 	margin:auto;
-	padding:35px;
-	margin:10px;
-}
-
-#adminContainer{
-	display: inline-block;
-	background-color: #fff;
-	border-radius: 25px;
-	margin: auto;
-	width: 710px;
-	padding: 35px;
-	text-align: center;
 	margin: 10px;
+	padding:10px;
+}
+.profile_comment_bottom_left{
+	display: inline-block;
+}
+.profile_comment_bottom_right{
+	float: right;
+	font-size: 60%;
 }
 
-.postCommentContainer{
-	width:auto;
-	height:auto;
-	margin: auto;
+
+/* Vote buttons */
+.upvote{
+	float: right;
+	text-decoration: none;
+	background-color: #00FF00;
+	color: #FFF;
+	padding: 2px 6px 2px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+	margin-right: 10px;
 }
 
-#commentTextArea{
-	width: 300px;
-	height: 120px;
+.downvote{
+	float: right;
+	text-decoration: none;
+	background-color: #FF0000;
+	color: #FFF;
+	padding: 2px 6px 2px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+}
+
+
+
+.comment_text_area{
+	width: 350px;
+	height: 150px;
 	border: 5px solid #ccc;
 	font-family: Tahoma; sans-serif;
 }
+
+
+
+/* Form inputs, containers, buttons */
+label{
+	float: left;
+}
+input[type=text], [type=password] {	
+	display: block;
+	height: 20px;
+	width: 100%;
+	background-color : #fff;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+input[type=submit] {
+	display:block;
+	width: 100%;
+	height: auto;
+	background-color: #b5d1ff;
+	color: black;
+	border-radius: 4px;
+	cursor: pointer;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+input[type=submit]:hover {
+	font-weight: bold;
+}
+.input_container_500px{
+	width: 500px;
+	margin: auto;
+}
+.button_width_auto{
+	display:block;
+	width:100%;
+	height: auto;
+	text-align: center;
+	text-decoration: none;
+	background-color: #b5d1ff;
+	color: black;
+	border-radius: 4px;
+	cursor: pointer;	
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.button_width_auto:hover{
+	font-weight: bold;
+}
+
+

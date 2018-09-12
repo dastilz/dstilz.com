@@ -1,23 +1,17 @@
 <?php
 include 'db.php';
-$mysqli->select_db("projects");
+$mysqli->select_db("hub");
 
-$subgroup=$_POST['subgroupName'];
+//Fetch post data
+$subgroup_name=$_POST['subgroup_name'];
 $position=$_POST['position'];
 
-$content = "";
-
+//Insert new subgroup into database
 if($query =  $mysqli->prepare("INSERT INTO `subgroups`(`names`, `position`) VALUES (?,?)")){
-	$query->bind_param('ss', $subgroup, $position);
+	$query->bind_param('ss', $subgroup_name, $position);
 	$query->execute();
 }
-else{
-	$error = $mysqli->errno.' ' . $mysqli->error;
-	echo $error;
-}
 
-if ($query)
-{
-	header("location:../account");
-}
+header("location:../account/private/?");
+
 

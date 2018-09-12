@@ -2,41 +2,40 @@
 include 'db.php';
 session_start();
 
-$myusername=$_POST['myusername'];
-$mypassword=$_POST['mypassword'];
-
-
+//Fetch login information from SQL query
+$login_username=$_POST['login_username'];
+$login_password=$_POST['login_password'];
 $mysqli->select_db("users");
-
-
-
 $query = $mysqli->prepare("SELECT * FROM login WHERE username=?");
-$query->bind_param('s', $myusername);
+$query->bind_param('s', $login_username);
 $query->execute();
 $result = $query->get_result();
-
-
 $data = $result->fetch_array(MYSQLI_NUM);
-
-$password = $data[1];
-$firstname = $data[2];
-$lastname = $data[3];
-$email = $data[4];
-$id = $data[5];
-$admin = $data[6];
-
-if($query && password_verify($mypassword, $password)){
-	$_SESSION['username'] = $myusername;
-	$_SESSION['firstname'] = $firstname;
-	$_SESSION['lastname'] = $lastname;
-	$_SESSION['email'] = $email;
-	$_SESSION['error'] = NULL;
-	$_SESSION['admin'] = $admin;
-	$_SESSION['privateid'] = $id;
-	header("location:../account/private");
+if ($data){
+	$username = $data[0];
+	$hash_password = $data[1];
+	$first_name = $data[2];
+	$last_name = $data[3];
+	$email = $data[4];
+	$private_id = $data[5];
+	$admin = $data[6];
 }
+
+//Verify login information
+if($query && password_verify($login_password, $hash_password)){
+	//If verified login information, create user session data and send to private account page
+	$_SESSION['username'] = $username;
+	$_SESSION['first_name'] = $first_name;
+	$_SESSION['last_name'] = $last_name;
+	$_SESSION['email'] = $email;
+	$_SESSION['admin'] = $admin;
+	$_SESSION['private_id'] = $private_id;
+	header("location:../account/private/?");
+}
+
+
 else{
-	$_SESSION['error'] = "Wrong username and/or password. Try again";
 	header("location:../login");
 }
+
 

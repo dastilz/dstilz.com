@@ -70,7 +70,7 @@ if (isset($_SESSION['username'])){
 		<div class=\"inline_content_container_400px\">
 			<form action=\"phpfunctions/post_profile_comment.php\" method=\"post\">
 				<div class=\"auto_centered_container\"><br>
-					<textarea class=\"comment_text_area\"name=\"comment\"></textarea><br><br>
+					<textarea class=\"account_comment_text_area\"name=\"comment\"></textarea><br><br>
 					<input name=\"post\" type=\"submit\" value=\"Post\"><br>					
 				</div>		
 			</form>	
@@ -110,6 +110,10 @@ if(isset($_SESSION['admin'])){
 						<br>
 						<p>Project Name:</p><input name=\"project_name\" type =\"text\">
 						<br>		
+						<p>Content:</p>				
+						<textarea class=\"hub_post_text_area\"name=\"content\"></textarea>
+						<br>	
+						<br>
 						<p><input name=\"submit\" type=\"submit\" value=\"Submit\"></p>
 					</div>
 				</form>

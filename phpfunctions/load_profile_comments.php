@@ -47,7 +47,7 @@ while ($data = $result->fetch_array(MYSQLI_NUM)){
 	echo "
 	<div class=\"profile_comment\">
 		<div class=\"profile_comment_top\">	
-			<p class=\"inline_p\"><a href=\"profile/public/$comment_user_id\">$username</a></p>
+			<p class=\"inline_p\"><a href=\"account/public/$comment_user_id\">$username</a></p>
 	";
 	if (isset($_SESSION['username'])){
 		echo "

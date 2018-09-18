@@ -15,7 +15,7 @@ $location = "discussions";
 
 $mysqli->select_db("users");
 //Insert comment into comments database
-$query1 = $mysqli->prepare("INSERT INTO `comments`(`username`,`id`, `comment`, `upvote`, `downvote`,`location`,`replyid`,`discussionid`) VALUES (?,?,?,?,?,?,?,?)");
+$query1 = $mysqli->prepare("INSERT INTO `comments`(`username`,`id`, `comment`, `upvote`, `downvote`,`location`,`reply_id`,`discussion_id`) VALUES (?,?,?,?,?,?,?,?)");
 $query1->bind_param('sssiisii', $username, $id, $comment, $default, $default, $location, $default, $discussion_id);
 $query1->execute();
 $result1 = $query1->get_result();

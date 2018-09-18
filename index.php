@@ -9,6 +9,7 @@ session_start();
 <head>
 	<!--Create base url for redirections-->
 	<base href="http://localhost/"/>
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
 	<link rel="stylesheet" href="style.css">
 	<!--Google font types-->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">

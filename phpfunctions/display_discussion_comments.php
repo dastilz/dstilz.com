@@ -12,10 +12,10 @@ $_SESSION['discussion_current_id'] = $discussion_id;
 $location = "discussions";
 
 //Based on sorting type, do an SQL query for discussion comments in the order determined by query
-if ($sortType == "newest"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussionid` = ? AND `location` = ? ORDER BY `timestamp` DESC");}
-else if ($sortType == "oldest"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussionid` = ? AND `location` = ?");}
-else if ($sortType == "mostUpvoted"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussionid` = ? AND `location` = ? ORDER BY `upvote` DESC");}
-else if ($sortType == "mostDownvoted"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussionid` = ? AND `location` = ? ORDER BY `upvote` DESC");}
+if ($sortType == "newest"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussion_id` = ? AND `location` = ? ORDER BY `timestamp` DESC");}
+else if ($sortType == "oldest"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussion_id` = ? AND `location` = ?");}
+else if ($sortType == "mostUpvoted"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussion_id` = ? AND `location` = ? ORDER BY `upvote` DESC");}
+else if ($sortType == "mostDownvoted"){$query = $mysqli->prepare("SELECT * FROM `comments` WHERE `discussion_id` = ? AND `location` = ? ORDER BY `upvote` DESC");}
 $query->bind_param('ss', $discussion_id, $location);
 $query->execute();
 $result = $query->get_result();
@@ -30,9 +30,9 @@ while ($data = $result->fetch_array(MYSQLI_NUM)){
 	$downvote = $data[4];
 	$timestamp = $data[5];
 	$location = $data[6];
-	$replyid = $data[7];
-	$postid = $data[8];
-	$discussionid = $data[9];
+	$reply_id = $data[7];
+	$post_id = $data[8];
+	$discussion_id = $data[9];
 	//Display individual comment
 	echo "
 	<div class=\"content_container_550px\">
@@ -41,8 +41,8 @@ while ($data = $result->fetch_array(MYSQLI_NUM)){
 		";
 		if (isset($_SESSION['username'])){
 			echo "
-					<a class=\"downvote\" href=\"forum/downvote/discussion_comment/$postid\">Downvote</a>	
-					<a class=\"upvote\" href=\"forum/upvote/discussion_comment/$postid\">Upvote</a>
+					<a class=\"downvote\" href=\"forum/downvote/discussion_comment/$post_id\">Downvote</a>	
+					<a class=\"upvote\" href=\"forum/upvote/discussion_comment/$post_id\">Upvote</a>
 			";
 		}
 		

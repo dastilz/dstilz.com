@@ -24,7 +24,7 @@ $mysqli->select_db("users");
 $default = 0;
 $location = 'profile';
 //Insert into comments database
-$query =  $mysqli->prepare("INSERT INTO `comments`(`username`,`id`, `comment`, `upvote`, `downvote`,`location`,`replyid`,`discussionid`) VALUES (?,?,?,?,?,?,?,?)");
+$query =  $mysqli->prepare("INSERT INTO `comments`(`username`,`id`, `comment`, `upvote`, `downvote`,`location`,`reply_id`,`discussion_id`) VALUES (?,?,?,?,?,?,?,?)");
 $query->bind_param('sssiisii', $username, $id, $comment, $default, $default, $location, $default, $default);
 $query->execute();
 $result = $query->get_result();

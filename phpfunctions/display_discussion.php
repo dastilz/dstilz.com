@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])){
 		<div class=\"content_container_250px\">
 			<h1>Post new comment:</h1><br>
 			<form action=\"phpfunctions/post_discussion_comment.php\" method=\"post\">
-				<textarea class=\"comment_discussion\"name=\"comment\"></textarea><br><br>
+				<textarea class=\"discussion_comment_text_area\"name=\"comment\"></textarea><br><br>
 				<input name=\"post\" type=\"submit\" value=\"Post\"><br>	
 			</form>
 		</div><br>

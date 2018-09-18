@@ -59,7 +59,7 @@ if ($vote_type == "upvote"){
 		$result = $query1->get_result();		
 		//If user hasn't already upvoted, increment upvote and put new data into counter database
 		if ($result->num_rows == 0){					
-			$query2 = $mysqli->prepare("UPDATE `comments` SET `upvote` = `upvote` + 1 WHERE postid = ?");
+			$query2 = $mysqli->prepare("UPDATE `comments` SET `upvote` = `upvote` + 1 WHERE post_id = ?");
 			$query2->bind_param('i', $comment_id);
 			$query2->execute();			
 			$query3 = $mysqli->prepare("INSERT INTO `counter` (`counter_type`, `site_location`, `user_id`, `discussion_id`, `comment_id`) VALUES (?,?,?,?,?)");
@@ -78,7 +78,7 @@ if ($vote_type == "upvote"){
 		$result = $query1->get_result();		
 		//If user hasn't already upvoted, increment upvote and put new data into counter database
 		if ($result->num_rows == 0){					
-			$query2 = $mysqli->prepare("UPDATE `comments` SET `upvote` = `upvote` + 1 WHERE postid = ?");
+			$query2 = $mysqli->prepare("UPDATE `comments` SET `upvote` = `upvote` + 1 WHERE post_id = ?");
 			$query2->bind_param('i', $comment_id);
 			$query2->execute();			
 			$query3 = $mysqli->prepare("INSERT INTO `counter` (`counter_type`, `site_location`, `user_id`, `discussion_id`, `comment_id`) VALUES (?,?,?,?,?)");
@@ -123,7 +123,7 @@ else if ($vote_type == "downvote"){
 		$result = $query1->get_result();		
 		//If user hasn't already upvoted, increment upvote and put new data into counter database
 		if ($result->num_rows == 0){					
-			$query2 = $mysqli->prepare("UPDATE `comments` SET `downvote` = `downvote` + 1 WHERE postid = ?");
+			$query2 = $mysqli->prepare("UPDATE `comments` SET `downvote` = `downvote` + 1 WHERE post_id = ?");
 			$query2->bind_param('i', $comment_id);
 			$query2->execute();			
 			$query3 = $mysqli->prepare("INSERT INTO `counter` (`counter_type`, `site_location`, `user_id`, `discussion_id`, `comment_id`) VALUES (?,?,?,?,?)");
@@ -141,7 +141,7 @@ else if ($vote_type == "downvote"){
 		$result = $query1->get_result();		
 		//If user hasn't already upvoted, increment upvote and put new data into counter database
 		if ($result->num_rows == 0){					
-			$query2 = $mysqli->prepare("UPDATE `comments` SET `downvote` = `downvote` + 1 WHERE postid = ?");
+			$query2 = $mysqli->prepare("UPDATE `comments` SET `downvote` = `downvote` + 1 WHERE post_id = ?");
 			$query2->bind_param('i', $comment_id);
 			$query2->execute();			
 			$query3 = $mysqli->prepare("INSERT INTO `counter` (`counter_type`, `site_location`, `user_id`, `discussion_id`, `comment_id`) VALUES (?,?,?,?,?)");

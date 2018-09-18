@@ -15,7 +15,7 @@ $hash_password = password_hash($register_password, PASSWORD_DEFAULT);
 
 //Put encrypted password and registration information into the database
 $mysqli->select_db("users");
-$query1 =  $mysqli->prepare("INSERT INTO `login`(`username`, `password`, `firstname`, `lastname`, `email`, `admin`) VALUES (?,?,?,?,?,?)");
+$query1 =  $mysqli->prepare("INSERT INTO `login`(`username`, `password`, `first_name`, `last_name`, `email`, `admin`) VALUES (?,?,?,?,?,?)");
 $query1->bind_param('sssssi', $register_username, $hash_password, $first_name, $last_name, $email, $default);
 $query1->execute();
 $result = $query1->get_result();

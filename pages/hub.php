@@ -50,16 +50,12 @@ session_start();
 		https://dstilz.com/hub/all - Shows all hub content
 		https://dstilz.com/hub/CONTENT - Show specific hub content
 		-->
-		<p>
 		<?php 	
 			$directory = $_SERVER['REQUEST_URI'];
-			list($empty, $name, $number)  = explode("/", $directory);
-			if ($number == "all")
-				require '../phpfunctions/display_hub.php';	
-			else
-				echo "<h1>$number</h1>";
+			list($one, $two, $three)  = explode("/", $directory);
+			$_SESSION['query3'] = $three;
+			require '../phpfunctions/display_hub.php';	
 		?>
-		</p>
 	</div>
 </div>
 </body>
